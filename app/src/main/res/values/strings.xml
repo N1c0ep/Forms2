@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RapiCoop2</string>
+    <string name="fecha_nam">Ingrese su fecha de nacimiento</string>
+    <string name="carrito">Button</string>
+    <string name="pizza">Pizza</string>
+    <string name="hamburguesa">Hamburguesa</string>
+    <string name="chorizo">Chorizo Con Arepa</string>
+    <string name="crepes">Crepes</string>
+    <string name="empanadas">Empanadas</string>
+    <string name="perro">Perros Calientes</string>
+    <string name="pinchos">Pinchos</string>
+    <string name="salchipapa">Salchipapa</string>
+    <string name="sandwich">Sandwiches</string>
+    <string name="tacos">Tacos</string>
+    <string name="menu">¿Qué quieres comer?</string>
+    <string-array name="tipo_vendedor">
+        <item>Vendedor</item>
+        <item>Comprador</item>
+        <item>Domiciliario</item>
+    </string-array>
+</resources>
