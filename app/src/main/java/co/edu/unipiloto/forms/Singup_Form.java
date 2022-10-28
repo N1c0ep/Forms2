@@ -18,10 +18,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -41,6 +41,7 @@ import java.util.Locale;
 public class Singup_Form extends AppCompatActivity {
 
     TextView tv;
+    private RapiCoopDatabaseHelper myDb;
     private TextInputLayout editFullName;
     private TextInputLayout editUserName;
     private TextInputLayout editEmail;
@@ -60,6 +61,7 @@ public class Singup_Form extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup_form);
         getSupportActionBar().setTitle("Formulario Registro");
+        myDb=new RapiCoopDatabaseHelper(this, "instituto", null, 1);
         tv=findViewById(R.id.button_fecha);
         direccion = (TextView) findViewById(R.id.txtDireccion);
 
@@ -133,6 +135,20 @@ public class Singup_Form extends AppCompatActivity {
         int edad = edad_user(anio,mes,dia);
         String tipoUsuario= editTipoUsuario.getSelectedItem().toString();
         if(edad>=18){
+            User user=new User();
+            user.setFullName(editFullName.getEditText().getText().toString());
+            user.setUserName(editUserName.getEditText().getText().toString());
+            user.setEmail(editEmail.getEditText().getText().toString());
+            user.setPassword(editPassword.getEditText().getText().toString());
+            user.setRol(editTipoUsuario.getItemAtPosition(editTipoUsuario.getSelectedItemPosition()).toString());
+            user.setAno_nacimiento(edad);
+            user.setDireccion(direccion.getText().toString());
+            user.setGenero(genero);
+            boolean isInserted=myDb.insertData(user);
+            if(isInserted)
+                Toast.makeText( Singup_Form.this,  "Informacion registrada", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText( Singup_Form.this,  "Informacion no registrada", Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,Login_form.class));
         }
         else if(tipoUsuario.equals("Comprador")){

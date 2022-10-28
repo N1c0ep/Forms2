@@ -63,7 +63,7 @@
         android:textColor="#FFFFFF"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_rounded"
-        android:onClick="btn_ingresar"
+        android:onClick="InicioSesion"
 
         />
     <Button
